@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="styles.css">
   </head>
   <body>
+    
     <h1>Acme Grid Maker</h1>
 
     <form>
@@ -14,6 +15,7 @@
     </form>
 
     <div id='grid'></div>
+    <div id='index'></div>
 
     <script >
       const button = document.querySelector('button');
@@ -24,12 +26,14 @@
       const errorRow = document.querySelector('#errorRow');
       const errorCol = document.querySelector('#errorCol');
       const grid = document.querySelector('#grid');
+      const index = document.querySelector('#index');
 
 
       form.addEventListener('submit',(ev)=>{
         ev.preventDefault();;
-        grid.innerHTML='';
-        let row= inputRow.value;
+        grid.innerHTML = '';
+        index.innerHTML = '';
+        let row = inputRow.value;
         let column = inputCol.value
         render();
       });
@@ -59,13 +63,24 @@
         for (let i=0; i<inputRow.value; i++){
           let row = `<div id = "${i}">`
           for (let j=0; j<inputCol.value; j++){
-            row = row + `<div style="solid 1px black"></div>`
+            row = row + `<div style="background-color:"></div>`
           }
           row = row + `</div>`;
           grid.innerHTML = grid. innerHTML + row;
         }
       };
 
+      grid.addEventListener('click', (ev)=>{
+        const cell = ev.target;
+        const row = cell.parentNode;
+        const cdx = [...row.children].indexOf(cell);
+        const rdx = [...row.parentNode.children].indexOf(row)
+        //console.log(cdx, rdx);
+        index.innerHTML = `rIdx: ${rdx} cIdx: ${cdx}`;
+        ev.target.setAttribute('style', 'background-color:dodgerblue');
+
+
+      })
 
     </script>
 
