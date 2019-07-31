@@ -1,23 +1,41 @@
-
+h1{
+  text-align: center;
+}
 #errorRow, #errorCol{
   color: red;
-  font-size: 1rem;
+  font-size: 0.75rem;
+  margin: 20px
 }
 
 #grid div div {
   border: solid 1px black;
-  height: 30px;
-  width: 30px;
+  height: 15px;
+  width: 15px;
 }
 #grid div{
   display:flex;
 }
 
-form input, button {
+form input, button{
   width:100%;
+  height: 1.5rem;
+  font-size: 1rem;
 }
 
 button{
   background-color: lightgray;
   font-weight: bold;
+}
+body{
+  padding: 0 25%;
+}
+
+#grid, #index {
+  text-align: center;
+}
+#gridAndIndex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
 }
